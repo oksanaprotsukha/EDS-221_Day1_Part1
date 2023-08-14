@@ -1,0 +1,10 @@
+---
+title: "EDS-221_Day1_Part1_Root"
+format: html
+editor: visual
+---
+
+```{r}
+# use ../ to jump to the working directory as many times as needed (e.g. two levels up ../../)
+energy2 <- read_csv("../data/us_energy.csv")
+```

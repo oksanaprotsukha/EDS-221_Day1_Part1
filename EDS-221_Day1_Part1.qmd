@@ -3,6 +3,33 @@ title: "EDS-221_Day1_Part1"
 author: "OP"
 format: html
 editor: visual
+execute: 
+  echo: true
+  warning: false
 ---
 
-## 
+```{r}
+library(tidyverse)
+library(readr)
+```
+
+```{r}
+energy <- read_csv("data/us_energy.csv")
+
+```
+
+```{r}
+# combine different layers in a single chart
+# parameters have to be encapsutated in the parameters list of ggplot
+# parameters within ggplot are global and will default to all layers
+ggplot(data=energy, aes(x = year, y = quadrillion_btu, group = type)) +
+  geom_line(aes(color = type)) +
+  geom_point(aes(color = type))
+```
+
+```{r}
+# ggplot with multiple layers and parameters within each individual layer
+ggplot()+
+  geom_point(data = energy, aes(x = year, y = quadrillion_btu, color = type))+
+  geom_line(data = energy, aes(x = year, y = quadrillion_btu, color = type))
+```
